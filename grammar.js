@@ -26,10 +26,4 @@ module.exports = grammar({
     field_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
     scheme_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
   },
-
-  extras: ($) => [/\s/, $.comment],
-
-  conflicts: ($) => [],
-
-  comment: ($) => /\/\/[^\n]*/,
 });

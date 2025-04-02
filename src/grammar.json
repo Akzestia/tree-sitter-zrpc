@@ -63,6 +63,10 @@
           "name": "field_name"
         },
         {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
           "type": "SYMBOL",
           "name": "scheme_type"
         }
@@ -80,10 +84,6 @@
           "value": "uname"
         }
       ]
-    },
-    "number": {
-      "type": "PATTERN",
-      "value": "\\d+"
     },
     "field_name": {
       "type": "PATTERN",

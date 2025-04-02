@@ -2,12 +2,6 @@
 
 
 scheme User {
-    user_id u32_id
-    user_name uname
-}
-
-
-scheme Message {
-    sender_id u32_id
-    receiver_id u32_id
+    user_id: u32_id
+    user_name: uname
 }

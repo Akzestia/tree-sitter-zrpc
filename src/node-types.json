@@ -69,6 +69,10 @@
     }
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": "scheme",
     "named": false
   },
