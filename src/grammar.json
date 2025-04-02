@@ -3,11 +3,61 @@
   "name": "zrpc",
   "rules": {
     "source_file": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "_definition"
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "import_statement"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_definition"
+          }
+        }
+      ]
+    },
+    "import_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_literal"
+        }
+      ]
+    },
+    "string_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^']*"
+        },
+        {
+          "type": "STRING",
+          "value": "'"
+        }
+      ]
     },
     "_definition": {
       "type": "CHOICE",
@@ -15,6 +65,10 @@
         {
           "type": "SYMBOL",
           "name": "scheme_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_definition"
         }
       ]
     },
@@ -27,20 +81,98 @@
         },
         {
           "type": "SYMBOL",
-          "name": "scheme_name"
+          "name": "struct_name"
         },
         {
           "type": "SYMBOL",
-          "name": "block"
+          "name": "scheme_block"
         }
       ]
     },
-    "block": {
+    "scheme_block": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
           "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "route_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "route"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "struct_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_block"
+        }
+      ]
+    },
+    "route_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "request_block"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "response_block"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "request_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "request {"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "response_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "response {"
         },
         {
           "type": "REPEAT",
@@ -68,9 +200,39 @@
         },
         {
           "type": "SYMBOL",
-          "name": "scheme_type"
+          "name": "type"
         }
       ]
+    },
+    "struct_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "scheme"
+        },
+        {
+          "type": "STRING",
+          "value": "route"
+        }
+      ]
+    },
+    "type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "scheme_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "user_defined_type"
+        }
+      ]
+    },
+    "user_defined_type": {
+      "type": "SYMBOL",
+      "name": "identifier"
     },
     "scheme_type": {
       "type": "CHOICE",
@@ -81,17 +243,57 @@
         },
         {
           "type": "STRING",
+          "value": "u64_id"
+        },
+        {
+          "type": "STRING",
           "value": "uname"
+        },
+        {
+          "type": "STRING",
+          "value": "uemail"
+        },
+        {
+          "type": "STRING",
+          "value": "upassword"
+        },
+        {
+          "type": "STRING",
+          "value": "uavatar"
+        },
+        {
+          "type": "STRING",
+          "value": "ubanner"
+        },
+        {
+          "type": "STRING",
+          "value": "time"
+        },
+        {
+          "type": "STRING",
+          "value": "lang"
+        },
+        {
+          "type": "STRING",
+          "value": "text"
+        },
+        {
+          "type": "STRING",
+          "value": "bytes"
         }
       ]
     },
-    "field_name": {
+    "identifier": {
       "type": "PATTERN",
       "value": "[a-zA-Z_][a-zA-Z0-9_]*"
     },
-    "scheme_name": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+    "field_name": {
+      "type": "SYMBOL",
+      "name": "identifier"
+    },
+    "struct_name": {
+      "type": "SYMBOL",
+      "name": "identifier"
     }
   },
   "extras": [
