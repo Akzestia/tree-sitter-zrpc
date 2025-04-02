@@ -214,6 +214,14 @@
         {
           "type": "STRING",
           "value": "route"
+        },
+        {
+          "type": "STRING",
+          "value": "request"
+        },
+        {
+          "type": "STRING",
+          "value": "response"
         }
       ]
     },

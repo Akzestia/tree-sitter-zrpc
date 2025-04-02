@@ -34,7 +34,7 @@ module.exports = grammar({
 
     _statement: ($) => seq($.field_name, ":", $.type),
 
-    struct_type: ($) => choice("scheme", "route"),
+    struct_type: ($) => choice("scheme", "route", "request", "response"),
 
     type: ($) => choice($.scheme_type, $.user_defined_type),
 
