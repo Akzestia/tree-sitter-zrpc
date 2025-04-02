@@ -12,7 +12,7 @@
 
 (number) @number
 
-
+;
 ; source_file: ($) => repeat($._definition),
 
 ; _definition: ($) => choice($.scheme_definition),
