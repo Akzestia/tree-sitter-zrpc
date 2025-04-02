@@ -1,33 +1,19 @@
 
-; Tree-sitter highlighting for zrpc
-; Captures for syntax highlighting
-
-; Keywords
 (scheme_definition
   "scheme" @keyword)
 
-; Types
+(scheme_name) @type.definition
+
+(field_name) @variable
+
+
 (scheme_type) @type
-(scheme_name) @variable
 
-; Variables/identifiers
-(identifier) @variable
+(block
+  "{" @punctuation.bracket
+  "}" @punctuation.bracket)
 
-; Punctuation
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
+(_statement
+  ":" @punctuation.delimiter)
 
-; Block definition
-(block) @punctuation.special
-
-; Numbers
-(number) @number
-
-; Comments (once implemented)
-;(comment) @comment
-
-; Function/scheme definition
-(scheme_definition
-  (identifier) @function)
+(comment) @comment

@@ -11,7 +11,6 @@ module.exports = grammar({
   name: "zrpc",
 
   rules: {
-    // TODO: add the actual grammar rules
     source_file: ($) => repeat($._definition),
 
     _definition: ($) => choice($.scheme_definition),
@@ -20,12 +19,17 @@ module.exports = grammar({
 
     block: ($) => seq("{", repeat($._statement), "}"),
 
-    _statement: ($) => seq($.field_name, $.scheme_type),
+    _statement: ($) => seq($.field_name, ":", $.scheme_type),
 
     scheme_type: ($) => choice("u32_id", "uname"),
 
-    number: ($) => /\d+/,
     field_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
     scheme_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
   },
+
+  extras: ($) => [/\s/, $.comment],
+
+  conflicts: ($) => [],
+
+  comment: ($) => /\/\/[^\n]*/,
 });
