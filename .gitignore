@@ -49,3 +49,5 @@ zig-out/
 # Build script & types cheetshit
 types.txt
 xar.sh
+
+Cargo.lock
