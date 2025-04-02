@@ -6,7 +6,6 @@
 
 (field_name) @variable
 
-
 (scheme_type) @type
 
 (block
@@ -15,5 +14,3 @@
 
 (_statement
   ":" @punctuation.delimiter)
-
-(comment) @comment
