@@ -11,19 +11,52 @@ module.exports = grammar({
   name: "zrpc",
 
   rules: {
-    source_file: ($) => repeat($._definition),
+    source_file: ($) =>
+      seq(optional(repeat($.import_statement)), repeat($._definition)),
 
-    _definition: ($) => choice($.scheme_definition),
+    import_statement: ($) => seq("import", $.string_literal),
 
-    scheme_definition: ($) => seq("scheme", $.scheme_name, $.block),
+    string_literal: ($) => seq("'", /[^']*/, "'"),
 
-    block: ($) => seq("{", repeat($._statement), "}"),
+    _definition: ($) => choice($.scheme_definition, $.route_definition),
 
-    _statement: ($) => seq($.field_name, ":", $.scheme_type),
+    scheme_definition: ($) => seq("scheme", $.struct_name, $.scheme_block),
 
-    scheme_type: ($) => choice("u32_id", "uname"),
+    scheme_block: ($) => seq("{", repeat($._statement), "}"),
 
-    field_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    scheme_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    route_definition: ($) => seq("route", $.struct_name, $.route_block),
+
+    route_block: ($) => seq("{", $.request_block, $.response_block, "}"),
+
+    request_block: ($) => seq("request {", repeat($._statement), "}"),
+
+    response_block: ($) => seq("response {", repeat($._statement), "}"),
+
+    _statement: ($) => seq($.field_name, ":", $.type),
+
+    struct_type: ($) => choice("scheme", "route"),
+
+    type: ($) => choice($.scheme_type, $.user_defined_type),
+
+    user_defined_type: ($) => $.identifier,
+
+    scheme_type: ($) =>
+      choice(
+        "u32_id",
+        "u64_id",
+        "uname",
+        "uemail",
+        "upassword",
+        "uavatar",
+        "ubanner",
+        "time",
+        "lang",
+        "text",
+        "bytes",
+      ),
+
+    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    field_name: ($) => $.identifier,
+    struct_name: ($) => $.identifier,
   },
 });
