@@ -8,6 +8,7 @@
 
 ; Types
 (scheme_type) @type
+(scheme_name) @variable
 
 ; Variables/identifiers
 (identifier) @variable
