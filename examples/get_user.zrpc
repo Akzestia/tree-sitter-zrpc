@@ -1,0 +1,10 @@
+import 'user.zrpc'
+
+route get_user {
+    request {
+        user_name: uname
+    }
+    response {
+        user: User
+    }
+}
