@@ -20,17 +20,17 @@ module.exports = grammar({
 
     _definition: ($) => choice($.scheme_definition, $.route_definition),
 
-    scheme_definition: ($) => seq("scheme", $.struct_name, $.scheme_block),
+    scheme_definition: ($) => seq($.struct_type, $.struct_name, $.scheme_block),
 
     scheme_block: ($) => seq("{", repeat($._statement), "}"),
 
-    route_definition: ($) => seq("route", $.struct_name, $.route_block),
+    route_definition: ($) => seq($.struct_type, $.struct_name, $.route_block),
 
     route_block: ($) => seq("{", $.request_block, $.response_block, "}"),
 
-    request_block: ($) => seq("request {", repeat($._statement), "}"),
+    request_block: ($) => seq($.struct_type, "{", repeat($._statement), "}"),
 
-    response_block: ($) => seq("response {", repeat($._statement), "}"),
+    response_block: ($) => seq($.struct_type, "{", repeat($._statement), "}"),
 
     _statement: ($) => seq($.field_name, ":", $.type),
 

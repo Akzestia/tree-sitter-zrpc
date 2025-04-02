@@ -35,10 +35,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "field_name",
+          "named": true
+        },
+        {
+          "type": "struct_type",
           "named": true
         },
         {
@@ -54,10 +58,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "field_name",
+          "named": true
+        },
+        {
+          "type": "struct_type",
           "named": true
         },
         {
@@ -101,6 +109,10 @@
         {
           "type": "struct_name",
           "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
         }
       ]
     }
@@ -138,6 +150,10 @@
         },
         {
           "type": "struct_name",
+          "named": true
+        },
+        {
+          "type": "struct_type",
           "named": true
         }
       ]
@@ -191,6 +207,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "struct_type",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "type",
@@ -251,11 +272,11 @@
     "named": false
   },
   {
-    "type": "request {",
+    "type": "request",
     "named": false
   },
   {
-    "type": "response {",
+    "type": "response",
     "named": false
   },
   {

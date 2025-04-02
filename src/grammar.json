@@ -76,8 +76,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "scheme"
+          "type": "SYMBOL",
+          "name": "struct_type"
         },
         {
           "type": "SYMBOL",
@@ -113,8 +113,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "route"
+          "type": "SYMBOL",
+          "name": "struct_type"
         },
         {
           "type": "SYMBOL",
@@ -151,8 +151,12 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "struct_type"
+        },
+        {
           "type": "STRING",
-          "value": "request {"
+          "value": "{"
         },
         {
           "type": "REPEAT",
@@ -171,8 +175,12 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "struct_type"
+        },
+        {
           "type": "STRING",
-          "value": "response {"
+          "value": "{"
         },
         {
           "type": "REPEAT",
