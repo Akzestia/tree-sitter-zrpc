@@ -16,16 +16,16 @@ module.exports = grammar({
 
     _definition: ($) => choice($.scheme_definition),
 
-    scheme_definition: ($) => seq("scheme", $.identifier, $.block),
+    scheme_definition: ($) => seq("scheme", $.scheme_name, $.block),
 
     block: ($) => seq("{", repeat($._statement), "}"),
 
-    _statement: ($) => seq($.identifier, $.scheme_type),
+    _statement: ($) => seq($.field_name, $.scheme_type),
 
     scheme_type: ($) => choice("u32_id", "uname"),
 
-    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-
     number: ($) => /\d+/,
+    field_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    scheme_name: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
   },
 });

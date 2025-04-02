@@ -8,7 +8,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "field_name",
           "named": true
         },
         {
@@ -17,6 +17,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "field_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "scheme_definition",
@@ -31,11 +36,16 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "scheme_name",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "scheme_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "scheme_type",
@@ -57,10 +67,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "identifier",
-    "named": true
   },
   {
     "type": "scheme",

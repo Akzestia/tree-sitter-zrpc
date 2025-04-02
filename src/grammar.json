@@ -27,7 +27,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "scheme_name"
         },
         {
           "type": "SYMBOL",
@@ -60,7 +60,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "field_name"
         },
         {
           "type": "SYMBOL",
@@ -81,13 +81,17 @@
         }
       ]
     },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z_][a-zA-Z0-9_]*"
-    },
     "number": {
       "type": "PATTERN",
       "value": "\\d+"
+    },
+    "field_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+    },
+    "scheme_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_][a-zA-Z0-9_]*"
     }
   },
   "extras": [
