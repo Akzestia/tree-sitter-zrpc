@@ -68,15 +68,6 @@
         }
       ]
     },
-    "keyword": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "scheme"
-        }
-      ]
-    },
     "scheme_type": {
       "type": "CHOICE",
       "members": [

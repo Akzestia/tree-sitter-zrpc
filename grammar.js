@@ -22,8 +22,6 @@ module.exports = grammar({
 
     _statement: ($) => seq($.identifier, $.scheme_type),
 
-    keyword: ($) => choice("scheme"),
-
     scheme_type: ($) => choice("u32_id", "uname"),
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
